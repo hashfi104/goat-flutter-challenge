@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/./melos_goat_flutter_challenge.iml" filepath="$PROJECT_DIR$/./melos_goat_flutter_challenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" filepath="$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/melos_goat_flutter_challenge.iml" filepath="$PROJECT_DIR$/melos_goat_flutter_challenge.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,28 @@
+name: goat_flutter_challenge
+
+packages:
+  - module/**
+  - '*'
+
+scripts:
+  analyze: melos exec -- "dart analyze ."
+  apply_fix: melos exec -- "dart fix --apply"
+  get: melos exec -c 1 --file-exists=".metadata" -- "flutter pub get"
+  flutter_clean: melos exec -c 1 -- "flutter clean"
+  test_coverage: melos exec --dir-exists="test" -- "flutter test --no-pub --coverage"
+  gen_merged_coverage: rm -rf \$MELOS_ROOT_PATH/unit_test_report/lcov.info && melos exec -c 1 -- "\$MELOS_ROOT_PATH/script/executable/combine_coverage.sh"
+  gen_html_merged_coverage: genhtml unit_test_report/lcov.info -o unit_test_report/loc_coverage_html_report -p \$MELOS_ROOT_PATH
+  clean_coverage_data: find . -name 'coverage' -type d | xargs rm -rf
+  test:selective_unit_test:
+    run: melos exec --dir-exists="test" --fail-fast -- flutter test --no-pub --coverage
+    description: Run Flutter tests for a specific package in this project.
+    select-package:
+      flutter: true
+      dir-exists: test
+  gen_locale:
+    run: melos exec "flutter pub run localization:locale_generator.dart --ui $SCOPE"
+    description: Generate locale resources for ui_ module.
+    select-package:
+      scope: 'ui_*'
+    env:
+      SCOPE: MELOS_PACKAGE_NAME
