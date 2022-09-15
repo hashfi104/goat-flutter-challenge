@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/./melos_goat_flutter_challenge.iml" filepath="$PROJECT_DIR$/./melos_goat_flutter_challenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/library/network_client/melos_network_client.iml" filepath="$PROJECT_DIR$/module/library/network_client/melos_network_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" filepath="$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" />
       <module fileurl="file://$PROJECT_DIR$/melos_goat_flutter_challenge.iml" filepath="$PROJECT_DIR$/melos_goat_flutter_challenge.iml" />
     </modules>

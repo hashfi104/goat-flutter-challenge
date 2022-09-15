@@ -1,4 +1,4 @@
-name: network_client
+name: networking
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
@@ -12,9 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   dio: ^4.0.6
-  async: ^2.8.2
   internet_connection_checker: ^0.0.1+4
-
   service_locator:
     path: ../../library/service_locator
 
