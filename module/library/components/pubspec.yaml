@@ -1,0 +1,35 @@
+name: components
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: 1.1.0
+  cached_network_image: 3.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  fonts:
+    - family: BukaSansDisplay
+      fonts:
+        - asset: asset/font/BukaSansDisplay-Medium.otf
+          weight: 500
+        - asset: asset/font/BukaSansDisplay-Bold.otf
+          weight: 700
+    - family: BukaSansText
+      fonts:
+        - asset: asset/font/BukaSansText-Regular.otf
+        - asset: asset/font/BukaSansText-Medium.otf
+          weight: 500
+        - asset: asset/font/BukaSansText-Bold.otf
+          weight: 700
