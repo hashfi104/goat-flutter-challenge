@@ -75,6 +75,7 @@ class ImageHolder {
       other.tint == tint;
 
   @override
+  // ignore: deprecated_member_use
   int get hashCode => hashValues(source.hashCode, image?.hashCode,
       file?.hashCode, imageSource.hashCode, tint?.hashCode);
 }

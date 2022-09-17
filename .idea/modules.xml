@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/module/library/assets/melos_assets.iml" filepath="$PROJECT_DIR$/module/library/assets/melos_assets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/library/components/melos_components.iml" filepath="$PROJECT_DIR$/module/library/components/melos_components.iml" />
       <module fileurl="file://$PROJECT_DIR$/./melos_goat_flutter_challenge.iml" filepath="$PROJECT_DIR$/./melos_goat_flutter_challenge.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module/library/network_client/melos_network_client.iml" filepath="$PROJECT_DIR$/module/library/network_client/melos_network_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/library/localization/melos_localization.iml" filepath="$PROJECT_DIR$/module/library/localization/melos_localization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/library/networking/melos_networking.iml" filepath="$PROJECT_DIR$/module/library/networking/melos_networking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/library/result_util/melos_result_util.iml" filepath="$PROJECT_DIR$/module/library/result_util/melos_result_util.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" filepath="$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" />
       <module fileurl="file://$PROJECT_DIR$/melos_goat_flutter_challenge.iml" filepath="$PROJECT_DIR$/melos_goat_flutter_challenge.iml" />
     </modules>
