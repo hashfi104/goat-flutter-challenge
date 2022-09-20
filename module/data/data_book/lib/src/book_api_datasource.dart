@@ -10,15 +10,20 @@ mixin BookApiDataSource
 
   @override
   Future<Result<GoatResponseArrayModel<Book>>> fetchBooks({
+    String? url,
     String? searchQuery,
   }) async {
+    final finalUrl = Uri.parse(
+      url ?? '${networkRequest.baseUrl}${FetchBooksInterface.defaultPath}',
+    );
     final Map<String, dynamic> queryParam = {
       'search': searchQuery ?? '',
     };
+    queryParam.addAll(finalUrl.queryParameters);
 
     return networkRequest.getRequestArray(
       Book.fromJson,
-      path: FetchBooksInterface.path,
+      path: finalUrl.path,
       queryParameters: searchQuery != null ? queryParam : null,
     );
   }

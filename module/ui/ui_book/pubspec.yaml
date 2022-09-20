@@ -1,0 +1,29 @@
+name: ui_book
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+publish_to: none
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  flutter_bloc: ^8.1.1
+
+  entity_book:
+    path: ../../entity/entity_book
+  domain_book:
+    path: ../../domain/domain_book
+  cubit_utils:
+    path: ../../library/cubit_utils
+  result_util:
+    path: ../../library/result_util
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0

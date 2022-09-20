@@ -6,9 +6,10 @@ import 'package:networking/networking.dart';
 import '../models/book.dart';
 
 abstract class FetchBooksInterface {
-  static const path = '/books';
+  static const defaultPath = '/books';
 
   Future<Result<GoatResponseArrayModel<Book>>> fetchBooks({
+    String? url,
     String? searchQuery,
   });
 }
