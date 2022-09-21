@@ -13,12 +13,21 @@ class BookListCubit extends Cubit<BookListState> with SafeEmitCubit {
   })  : _fetchBooksUseCase = fetchBooksUseCase,
         super(initialState);
 
-  void loadMoreBooks() {}
+  void loadMoreBooks() {
+    emit(state.copyWith(loadingState: BookListLoadingState.loadMore));
+    loadBooks();
+  }
 
-  Future<void> loadBooks({String? keyword}) async {
+  Future<void> loadBooks() async {
+    final nextUrl = state.nextUrl ?? '';
+
+    if (nextUrl.isEmpty) {
+      return;
+    }
+
     final result = await _fetchBooksUseCase.call(
-      url: state.nextUrl,
-      searchQuery: keyword,
+      url: nextUrl,
+      searchQuery: state.currentKeyword,
     );
 
     result.when(
@@ -28,6 +37,7 @@ class BookListCubit extends Cubit<BookListState> with SafeEmitCubit {
           if (result.next == null && result.previous != null) {
             emit(state.copyWith(
               loadingState: BookListLoadingState.stopLoadMore,
+              nextUrl: '',
             ));
           } else {
             emit(state.copyWith(
@@ -36,16 +46,22 @@ class BookListCubit extends Cubit<BookListState> with SafeEmitCubit {
                 ...books,
               ],
               loadingState: BookListLoadingState.stopLoadMore,
+              nextUrl: result.next,
             ));
           }
         } else {
           emit(state.copyWith(
             books: books,
             loadingState: BookListLoadingState.success,
+            nextUrl: result.next,
           ));
         }
       },
       onError: (error) {},
     );
+  }
+
+  void setKeyword(String keyword) {
+    emit(state.copyWith(currentKeyword: keyword));
   }
 }

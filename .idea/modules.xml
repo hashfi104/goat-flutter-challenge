@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/module/library/assets/melos_assets.iml" filepath="$PROJECT_DIR$/module/library/assets/melos_assets.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/library/components/melos_components.iml" filepath="$PROJECT_DIR$/module/library/components/melos_components.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/library/cubit_utils/melos_cubit_utils.iml" filepath="$PROJECT_DIR$/module/library/cubit_utils/melos_cubit_utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/data/data_book/melos_data_book.iml" filepath="$PROJECT_DIR$/module/data/data_book/melos_data_book.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/domain/domain_book/melos_domain_book.iml" filepath="$PROJECT_DIR$/module/domain/domain_book/melos_domain_book.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/entity/entity_book/melos_entity_book.iml" filepath="$PROJECT_DIR$/module/entity/entity_book/melos_entity_book.iml" />
@@ -12,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/module/library/networking/melos_networking.iml" filepath="$PROJECT_DIR$/module/library/networking/melos_networking.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/library/result_util/melos_result_util.iml" filepath="$PROJECT_DIR$/module/library/result_util/melos_result_util.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" filepath="$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/ui/ui_book/melos_ui_book.iml" filepath="$PROJECT_DIR$/module/ui/ui_book/melos_ui_book.iml" />
       <module fileurl="file://$PROJECT_DIR$/melos_goat_flutter_challenge.iml" filepath="$PROJECT_DIR$/melos_goat_flutter_challenge.iml" />
     </modules>
   </component>
