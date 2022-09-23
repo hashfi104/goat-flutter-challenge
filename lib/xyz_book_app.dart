@@ -25,6 +25,7 @@ class XYZBookApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // Put your entry in here
     List<RouteBase> entryRoutes = [];
     entryRoutes.addAll(
       BookEntry(locator: locator).routes,
