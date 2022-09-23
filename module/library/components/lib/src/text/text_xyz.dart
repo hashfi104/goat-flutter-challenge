@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'typography_token.dart';
+import '../token/typography_token.dart';
 
 class TextXYZ extends StatelessWidget {
   final String text;

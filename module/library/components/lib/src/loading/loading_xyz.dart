@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../color/color_token.dart';
+import '../token/color_token.dart';
 import 'loading_builder/loading_animation_linear.dart';
 import 'loading_builder/loading_animation_wave.dart';
 import 'loading_builder/loading_decorate.dart';

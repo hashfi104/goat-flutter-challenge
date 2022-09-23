@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../color/color_token.dart';
+import '../token/color_token.dart';
 import '../image/image_xyz.dart';
 import '../image/image_holder.dart';
 

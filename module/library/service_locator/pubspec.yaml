@@ -13,6 +13,7 @@ dependencies:
   collection: ^1.15.0
   async: ^2.8.2
   lazy_evaluation: ^1.1.0
+  get_it: ^7.2.0
 
 dev_dependencies:
   flutter_test:

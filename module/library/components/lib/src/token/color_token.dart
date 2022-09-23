@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'base_color.dart';
+import '../color/base_color.dart';
 
 class ColorToken {
   ColorToken._();

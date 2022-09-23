@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../color/color_token.dart';
+import 'color_token.dart';
 
 const _bukaSansDisplay = 'BukaSansDisplay';
 const _bukaSansText = 'BukaSansText';

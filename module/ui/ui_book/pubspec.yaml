@@ -16,12 +16,18 @@ dependencies:
 
   entity_book:
     path: ../../entity/entity_book
+
   domain_book:
     path: ../../domain/domain_book
+
   cubit_utils:
     path: ../../library/cubit_utils
   result_util:
     path: ../../library/result_util
+  components:
+    path: ../../library/components
+  localization:
+    path: ../../library/localization
 
 dev_dependencies:
   flutter_test:

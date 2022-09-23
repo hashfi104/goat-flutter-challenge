@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../color/color_token.dart';
+import '../token/color_token.dart';
 import '../icon/icon_xyz.dart';
 import '../image/image_holder.dart';
 import '../loading/loading_xyz.dart';
 import '../text/text_xyz.dart';
-import '../text/typography_token.dart';
+import '../token/typography_token.dart';
 import 'button_state_style.dart';
 
 class ButtonXYZ extends StatelessWidget {

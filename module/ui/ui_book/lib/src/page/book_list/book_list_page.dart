@@ -1,18 +1,23 @@
+import 'package:domain_book/domain_book.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ui_book/src/page/book_list/book_list_cubit.dart';
 
-class BookListPage extends MaterialPageRoute {
-  BookListPage({required super.builder});
-}
+import 'views/book_list_page_view.dart';
 
-class BookListPageView extends StatefulWidget {
-  @override
-  State<BookListPageView> createState() => _BookListPageViewState();
-}
+class BookListPage extends StatelessWidget {
+  final FetchBooksUseCase fetchBooksUseCase;
 
-class _BookListPageViewState extends State<BookListPageView> {
+  const BookListPage({
+    Key? key,
+    required this.fetchBooksUseCase,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return BlocProvider(
+      create: (context) => BookListCubit(fetchBooksUseCase: fetchBooksUseCase),
+      child: const BookListPageView(),
+    );
   }
 }
