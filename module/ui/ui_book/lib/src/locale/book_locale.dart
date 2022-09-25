@@ -10,6 +10,18 @@ class BookLocale extends GoatLocale {
     return resource.get('bookListTitle');
   }
   
+  String get somethingWrong {
+    return resource.get('somethingWrong');
+  }
+  
+  String get checkConnection {
+    return resource.get('checkConnection');
+  }
+  
+  String get retry {
+    return resource.get('retry');
+  }
+  
   @override
   LocaleResource get resource {
     return BookLocaleResource(languageCode);

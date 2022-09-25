@@ -10,5 +10,14 @@ class BookLocaleResource extends LocaleResource {
     'bookListTitle': {
       'default': 'List of Books',
     },
+    'somethingWrong': {
+      'default': 'Something went wrong..',
+    },
+    'checkConnection': {
+      'default': 'Please check your connection, make sure it is connected.',
+    },
+    'retry': {
+      'default': 'Retry',
+    },
   };
 }

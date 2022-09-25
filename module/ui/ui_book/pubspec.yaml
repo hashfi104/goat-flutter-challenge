@@ -20,6 +20,8 @@ dependencies:
   domain_book:
     path: ../../domain/domain_book
 
+  assets:
+    path: ../../library/assets
   cubit_utils:
     path: ../../library/cubit_utils
   result_util:
@@ -33,3 +35,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+
+flutter:
+  assets:
+    - asset/image/

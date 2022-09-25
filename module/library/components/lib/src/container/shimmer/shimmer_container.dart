@@ -4,27 +4,27 @@ import '../../../components.dart';
 import 'shimmer_animate.dart';
 import 'sliding_gradient_transform.dart';
 
-class BazaarShimmer extends StatefulWidget {
+class XYZShimmer extends StatefulWidget {
   final Widget child;
   final List<Color>? colors;
 
-  static _BazaarShimmerState? of(BuildContext context) {
-    return context.findAncestorStateOfType<_BazaarShimmerState>();
+  static _XYZShimmerState? of(BuildContext context) {
+    return context.findAncestorStateOfType<_XYZShimmerState>();
   }
 
   /// [child] Widget child
   /// [colors] Colors shimmer
-  const BazaarShimmer({
+  const XYZShimmer({
     Key? key,
     required this.child,
     this.colors,
   }) : super(key: key);
 
   @override
-  _BazaarShimmerState createState() => _BazaarShimmerState();
+  _XYZShimmerState createState() => _XYZShimmerState();
 }
 
-class _BazaarShimmerState extends State<BazaarShimmer>
+class _XYZShimmerState extends State<XYZShimmer>
     with SingleTickerProviderStateMixin {
   static const _animationDuration = 1500;
 

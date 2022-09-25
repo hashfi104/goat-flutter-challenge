@@ -1,6 +1,15 @@
 {
-  "@@last_modified": "2022-09-22T20:52:46.309115",
+  "@@last_modified": "2022-09-26T05:36:39.570320",
   "bookListTitle": {
     "default": "List of Books"
+  },
+  "somethingWrong": {
+    "default": "Something went wrong.."
+  },
+  "checkConnection": {
+    "default": "Please check your connection, make sure it is connected."
+  },
+  "retry": {
+    "default": "Retry"
   }
 }

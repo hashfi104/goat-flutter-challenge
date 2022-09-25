@@ -16,7 +16,8 @@ class BookListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => BookListCubit(fetchBooksUseCase: fetchBooksUseCase),
+      create: (context) =>
+          BookListCubit(fetchBooksUseCase: fetchBooksUseCase)..loadBooks(),
       child: const BookListPageView(),
     );
   }

@@ -70,16 +70,15 @@ class Tappable extends StatelessWidget {
   Widget build(BuildContext context) {
     if (_shouldUseInkWell) {
       return InkWell(
-        child: child,
         borderRadius: borderRadius,
         onTap: _onTap,
         onDoubleTap: _onDoubleTap,
         onLongPress: _onLongPress,
+        child: child,
       );
     }
 
     return GestureDetector(
-      child: child,
       onTapUp: onTapUp,
       onTapDown: onTapDown,
       onTap: (onTap == null && onTapUp == null && onTapDown == null)
@@ -105,6 +104,7 @@ class Tappable extends StatelessWidget {
           : (value) {
               onPanEnd?.call(value);
             },
+      child: child,
     );
   }
 

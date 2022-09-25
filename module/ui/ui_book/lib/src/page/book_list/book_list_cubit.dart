@@ -19,46 +19,48 @@ class BookListCubit extends Cubit<BookListState> with SafeEmitCubit {
   }
 
   Future<void> loadBooks() async {
+    final prevUrl = state.prevUrl ?? '';
     final nextUrl = state.nextUrl ?? '';
 
-    if (nextUrl.isEmpty) {
+    if (nextUrl.isEmpty && prevUrl.isNotEmpty) {
       return;
     }
 
     final result = await _fetchBooksUseCase.call(
-      url: nextUrl,
+      url: nextUrl.isEmpty ? null : nextUrl,
       searchQuery: state.currentKeyword,
     );
 
     result.when(
       onValue: (result) {
         final books = result.results;
-        if (state.loadingState == BookListLoadingState.loadMore) {
-          if (result.next == null && result.previous != null) {
-            emit(state.copyWith(
-              loadingState: BookListLoadingState.stopLoadMore,
-              nextUrl: '',
-            ));
-          } else {
-            emit(state.copyWith(
-              books: [
-                ...state.books,
-                ...books,
-              ],
-              loadingState: BookListLoadingState.stopLoadMore,
-              nextUrl: result.next,
-            ));
-          }
+        if (result.next == null && result.previous != null) {
+          emit(state.copyWith(
+            loadingState: BookListLoadingState.stopLoadMore,
+            prevUrl: result.previous,
+            nextUrl: '',
+          ));
         } else {
           emit(state.copyWith(
-            books: books,
+            books: [
+              ...state.books,
+              ...books,
+            ],
             loadingState: BookListLoadingState.success,
+            prevUrl: result.previous,
             nextUrl: result.next,
           ));
         }
       },
-      onError: (error) {},
+      onError: (error) {
+        emit(state.copyWith(loadingState: BookListLoadingState.error));
+      },
     );
+  }
+
+  Future<void> onRefresh() async {
+    emit(state.copyWith(prevUrl: '', nextUrl: ''));
+    await loadBooks();
   }
 
   void setKeyword(String keyword) {

@@ -21,7 +21,7 @@ class _ShimmerAnimateState extends State<ShimmerAnimate> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _shimmerChanges?.removeListener(_onShimmerChange);
-    _shimmerChanges = BazaarShimmer.of(context)?.shimmerChanges;
+    _shimmerChanges = XYZShimmer.of(context)?.shimmerChanges;
     _shimmerChanges?.addListener(_onShimmerChange);
   }
 
@@ -40,7 +40,7 @@ class _ShimmerAnimateState extends State<ShimmerAnimate> {
   @override
   Widget build(BuildContext context) {
     // Collect ancestor shimmer info.
-    final shimmer = BazaarShimmer.of(context);
+    final shimmer = XYZShimmer.of(context);
     if (shimmer == null) return const SizedBox.shrink();
     if (!shimmer.isSized) {
       // The ancestor Shimmer widget has not laid

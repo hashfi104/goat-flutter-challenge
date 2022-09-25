@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/module/library/localization/melos_localization.iml" filepath="$PROJECT_DIR$/module/library/localization/melos_localization.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/library/networking/melos_networking.iml" filepath="$PROJECT_DIR$/module/library/networking/melos_networking.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/library/result_util/melos_result_util.iml" filepath="$PROJECT_DIR$/module/library/result_util/melos_result_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/router/router_book/melos_router_book.iml" filepath="$PROJECT_DIR$/module/router/router_book/melos_router_book.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" filepath="$PROJECT_DIR$/module/library/service_locator/melos_service_locator.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/ui/ui_book/melos_ui_book.iml" filepath="$PROJECT_DIR$/module/ui/ui_book/melos_ui_book.iml" />
       <module fileurl="file://$PROJECT_DIR$/melos_goat_flutter_challenge.iml" filepath="$PROJECT_DIR$/melos_goat_flutter_challenge.iml" />
