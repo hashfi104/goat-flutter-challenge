@@ -1,9 +1,7 @@
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 
-import '../container/tappable_container.dart';
 import '../icon/icon_position.dart';
-import '../token/corner_token.dart';
 
 class ButtonLink extends StatelessWidget {
   final String text;

@@ -19,6 +19,19 @@ class BookEntry implements RouteBase {
           fetchBooksUseCase: locator(),
         ),
       ),
+      GoRoute(
+        name: 'search_result',
+        path: '/search',
+        builder: (
+          BuildContext context,
+          GoRouterState state,
+        ) {
+          return BookListSearchPage(
+            fetchBooksUseCase: locator(),
+            keyword: state.queryParams['keyword'] ?? '',
+          );
+        },
+      ),
     ];
   }
 }

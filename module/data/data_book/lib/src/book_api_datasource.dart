@@ -16,16 +16,15 @@ mixin BookApiDataSource
     final finalUrl = Uri.parse(
       url ?? '${networkRequest.baseUrl}${FetchBooksInterface.defaultPath}',
     );
-    final Map<String, dynamic> queryParam = finalUrl.queryParameters;
+    final Map<String, String> queryParam = Map.of(finalUrl.queryParameters);
 
     if (searchQuery != null) {
-      final searchEntry = {'search': searchQuery};
-      queryParam.addEntries(searchEntry.entries);
+      queryParam['search'] = searchQuery;
     }
 
     return networkRequest.getRequestArray(
       Book.fromJson,
-      path: finalUrl.path,
+      path: FetchBooksInterface.defaultPath,
       queryParameters: queryParam,
     );
   }

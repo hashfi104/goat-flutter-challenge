@@ -63,7 +63,14 @@ class BookListCubit extends Cubit<BookListState> with SafeEmitCubit {
     await loadBooks();
   }
 
-  void setKeyword(String keyword) {
-    emit(state.copyWith(currentKeyword: keyword));
+  Future<void> setKeyword(String? keyword) async {
+    emit(state.copyWith(
+      loadingState: BookListLoadingState.fetch,
+      currentKeyword: keyword,
+      books: [],
+      prevUrl: '',
+      nextUrl: '',
+    ));
+    await loadBooks();
   }
 }

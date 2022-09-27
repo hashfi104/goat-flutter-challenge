@@ -20,3 +20,4 @@ flutter:
   assets:
     - asset/image/
     - asset/icon/major/
+    - asset/icon/minor/

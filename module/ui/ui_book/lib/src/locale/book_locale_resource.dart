@@ -19,5 +19,14 @@ class BookLocaleResource extends LocaleResource {
     'retry': {
       'default': 'Retry',
     },
+    'searchBooks': {
+      'default': 'Search Book',
+    },
+    'cancel': {
+      'default': 'Cancel',
+    },
+    'searchResult': {
+      'default': 'Search result related to ',
+    },
   };
 }

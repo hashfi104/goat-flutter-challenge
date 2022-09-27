@@ -22,6 +22,18 @@ class BookLocale extends GoatLocale {
     return resource.get('retry');
   }
   
+  String get searchBooks {
+    return resource.get('searchBooks');
+  }
+  
+  String get cancel {
+    return resource.get('cancel');
+  }
+  
+  String get searchResult {
+    return resource.get('searchResult');
+  }
+  
   @override
   LocaleResource get resource {
     return BookLocaleResource(languageCode);

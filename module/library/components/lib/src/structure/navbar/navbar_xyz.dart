@@ -1,12 +1,8 @@
 import 'package:assets/assets.dart';
 import 'package:components/components.dart';
-import 'package:components/src/structure/menu_bar_xyz.dart';
 import 'package:flutter/material.dart';
 
-import '../../button/button_link_xyz.dart';
-import '../../container/tappable_container.dart';
-import '../../image/image_holder.dart';
-import '../../token/color_token.dart';
+import '../../button/button_link.dart';
 import '../separator_line.dart';
 
 class NavBarXYZ extends StatefulWidget implements PreferredSizeWidget {

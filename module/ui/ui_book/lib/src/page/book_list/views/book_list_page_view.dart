@@ -1,6 +1,8 @@
+import 'package:assets/assets.dart';
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:localization/localization.dart';
 import 'package:ui_book/src/page/book_list/views/book_list_error_view.dart';
 import 'package:ui_book/src/page/book_list/views/book_list_loading_view.dart';
@@ -48,7 +50,17 @@ class _BookListPageViewState extends State<BookListPageView> {
     final locale = GoatLocale.of<BookLocale>(context);
 
     return Scaffold(
-      appBar: NavBarXYZ(title: locale.bookListTitle),
+      appBar: NavBarXYZ(
+        title: locale.bookListTitle,
+        menus: [
+          MenuBarItem(id: 'search', icon: XYZIcons.search),
+        ],
+        onMenuTap: (menu) {
+          if (menu.id == 'search') {
+            context.pushNamed('search_result');
+          }
+        },
+      ),
       body: BlocBuilder<BookListCubit, BookListState>(
         builder: (context, state) {
           return _childWidget(context, locale, state);
