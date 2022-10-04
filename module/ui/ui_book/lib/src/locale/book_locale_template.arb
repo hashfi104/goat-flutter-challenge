@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2022-09-27T08:31:02.835975",
+  "@@last_modified": "2022-10-04T00:58:47.726691",
   "bookListTitle": {
     "default": "List of Books"
   },
@@ -20,5 +20,14 @@
   },
   "searchResult": {
     "default": "Search result related to "
+  },
+  "bookDetail": {
+    "default": "Book Detail"
+  },
+  "downloadCount": {
+    "default": "Total Download: %s"
+  },
+  "readOnline": {
+    "default": "Read Online"
   }
 }

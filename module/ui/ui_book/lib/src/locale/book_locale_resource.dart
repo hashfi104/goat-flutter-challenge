@@ -28,5 +28,14 @@ class BookLocaleResource extends LocaleResource {
     'searchResult': {
       'default': 'Search result related to ',
     },
+    'bookDetail': {
+      'default': 'Book Detail',
+    },
+    'downloadCount': {
+      'default': 'Total Download: %s',
+    },
+    'readOnline': {
+      'default': 'Read Online',
+    },
   };
 }

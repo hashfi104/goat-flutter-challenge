@@ -34,6 +34,18 @@ class BookLocale extends GoatLocale {
     return resource.get('searchResult');
   }
   
+  String get bookDetail {
+    return resource.get('bookDetail');
+  }
+  
+  String downloadCount(dynamic s0) {
+    return resource.get('downloadCount', args: [s0]);
+  }
+  
+  String get readOnline {
+    return resource.get('readOnline');
+  }
+  
   @override
   LocaleResource get resource {
     return BookLocaleResource(languageCode);

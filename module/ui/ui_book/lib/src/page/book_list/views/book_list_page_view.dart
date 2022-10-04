@@ -103,6 +103,10 @@ class _BookListPageViewState extends State<BookListPageView> {
               imageURL: book.formats.image ?? '',
               title: book.title,
               author: authors.isNotEmpty ? authors.first.name : '',
+              onTapCard: () => context.pushNamed(
+                'book_detail',
+                params: {'id': book.id.toString()},
+              ),
             );
           }),
           separatorBuilder: (context, index) => const SizedBox(height: 8),

@@ -32,6 +32,19 @@ class BookEntry implements RouteBase {
           );
         },
       ),
+      GoRoute(
+        name: 'book_detail',
+        path: '/detail/:id',
+        builder: (
+          BuildContext context,
+          GoRouterState state,
+        ) {
+          return BookDetailPage(
+            id: state.params['id'] ?? '',
+            fetchBookDetailUseCase: locator(),
+          );
+        },
+      ),
     ];
   }
 }

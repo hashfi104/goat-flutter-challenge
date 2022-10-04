@@ -14,7 +14,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  go_router: ^5.0.1
+  go_router: ^5.0.5
 
   router_book:
     path: module/router/router_book
