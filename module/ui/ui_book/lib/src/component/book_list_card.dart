@@ -15,15 +15,40 @@ class BookListCard extends StatelessWidget {
     this.onTapCard,
   }) : super(key: key);
 
+  static const containerAllPadding = EdgeInsets.all(16);
+  static const double outerPaddingLeft = 16;
+  static const double outerPaddingRight = 16;
+  static const double containerPaddingLeft = 16;
+  static const double containerPaddingRight = 16;
+  static const double imageWidth = 80;
+  static const double imageHeight = 120;
+  static const double separatorWidth = 16;
+  static const double borderLeftRightWidth = 2;
+  static const titleMaxLines = 2;
+  static const authorMaxLines = 3;
+
   static const noImageAsset = 'packages/ui_book/asset/image/no_book_image.jpeg';
 
   @override
   Widget build(BuildContext context) {
-    final double textWidth = MediaQuery.of(context).size.width - 162;
+    final double textWidth = MediaQuery.of(context).size.width -
+        (outerPaddingLeft +
+            outerPaddingRight +
+            containerPaddingLeft +
+            containerPaddingRight +
+            imageWidth +
+            borderLeftRightWidth);
+
+    final double contentWidth = MediaQuery.of(context).size.width -
+        (outerPaddingLeft +
+            outerPaddingRight +
+            containerPaddingLeft +
+            containerPaddingRight);
+
     return Tappable(
       onTap: onTapCard,
       child: Container(
-        width: MediaQuery.of(context).size.width - 64,
+        width: contentWidth,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           border: Border.all(
@@ -38,15 +63,15 @@ class BookListCard extends StatelessWidget {
             if (imageURL.isNotEmpty)
               ImageXYZ.network(
                 NetworkImage(imageURL),
-                width: 80,
-                height: 120,
+                width: imageWidth,
+                height: imageHeight,
                 fit: BoxFit.fill,
               )
             else
               ImageXYZ.asset(
                 noImageAsset,
-                width: 80,
-                height: 120,
+                width: imageWidth,
+                height: imageHeight,
                 fit: BoxFit.fill,
               ),
             const SizedBox(width: 16),
@@ -61,12 +86,12 @@ class BookListCard extends StatelessWidget {
                     TextXYZ(
                       title,
                       style: TypographyToken.body16Bold(),
-                      maxLines: 3,
+                      maxLines: titleMaxLines,
                     ),
                     const SizedBox(height: 4),
                     TextXYZ(
                       author,
-                      maxLines: 2,
+                      maxLines: authorMaxLines,
                     ),
                   ],
                 ),

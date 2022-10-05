@@ -14,6 +14,9 @@ class BookDetailCubit extends Cubit<BookDetailState> with SafeEmitCubit {
         super(initialState);
 
   Future<void> fetchBookDetail(String id) async {
+    // change state to loading
+    emit(state.copyWith(loadingState: BookDetailLoadingState.fetch));
+
     final result = await _fetchBookDetailUseCase.call(id: id);
 
     result.when(

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:localization/localization.dart';
+import 'package:ui_book/src/component/book_error_view.dart';
 import 'package:ui_book/src/locale/book_locale.dart';
 import 'package:ui_book/src/page/book_detail/book_detail_cubit.dart';
 import 'package:ui_book/src/page/book_detail/views/book_detail_loading_view.dart';
@@ -14,14 +15,28 @@ import 'package:url_launcher/url_launcher.dart';
 import '../book_detail_state.dart';
 
 class BookDetailPageView extends StatelessWidget {
+  final String id;
+
   const BookDetailPageView({
     Key? key,
+    required this.id,
   }) : super(key: key);
 
   static const noImageAsset = 'packages/ui_book/asset/image/no_book_image.jpeg';
   static const double imageWidth = 150;
   static const double imageHeight = 200;
   static const double imagePlaceHolderSize = 250;
+
+  // Key
+  static const loadingViewKey = Key('loading-view');
+  static const errorViewKey = Key('error-view');
+  static const listViewKey = Key('list-view');
+  static const imageKey = Key('image');
+  static const titleKey = Key('title');
+  static Key authorKey(String name) => Key('author-$name');
+  static const downloadCountKey = Key('download-count');
+  static const readOnlineButtonKey = Key('read-online-button');
+  static const backButtonKey = Key('back-button');
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +46,7 @@ class BookDetailPageView extends StatelessWidget {
       appBar: NavBarXYZ(
         title: locale.bookDetail,
         onNavigationTap: () => GoRouter.of(context).pop(),
+        keyNavigationIcon: BookDetailPageView.backButtonKey,
       ),
       body: BlocBuilder<BookDetailCubit, BookDetailState>(
           builder: (context, state) {
@@ -38,7 +54,20 @@ class BookDetailPageView extends StatelessWidget {
         final bookImage = book?.formats.image;
 
         if (state.loadingState == BookDetailLoadingState.fetch) {
-          return const BookDetailLoadingView();
+          return const BookDetailLoadingView(
+            key: BookDetailPageView.loadingViewKey,
+          );
+        }
+
+        if (state.loadingState == BookDetailLoadingState.error) {
+          return BookErrorView(
+            key: BookDetailPageView.errorViewKey,
+            title: locale.somethingWrong,
+            description: state.errorMessage ?? '',
+            buttonTitle: locale.retry,
+            onTapButton: () =>
+                context.read<BookDetailCubit>().fetchBookDetail(id),
+          );
         }
 
         if (book != null) {
@@ -47,6 +76,7 @@ class BookDetailPageView extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView(
+                  key: listViewKey,
                   children: [
                     _imageWidget(bookImage),
                     const SizedBox(height: 24),
@@ -60,6 +90,7 @@ class BookDetailPageView extends StatelessWidget {
               ),
               ButtonXYZ.large(
                 locale.readOnline,
+                key: readOnlineButtonKey,
                 onPressed: () async {
                   _launchUrl(book.formats.textHtml ?? '');
                 },
@@ -75,6 +106,7 @@ class BookDetailPageView extends StatelessWidget {
 
   Widget _imageWidget(String? bookImage) {
     return Container(
+      key: imageKey,
       width: double.infinity,
       height: imagePlaceHolderSize,
       decoration: BoxDecoration(
@@ -110,6 +142,7 @@ class BookDetailPageView extends StatelessWidget {
 
   Widget _titleWidget(BuildContext context, String title) {
     return Tappable(
+      key: titleKey,
       onTap: () => _goToSearhPage(context, title),
       child: TextXYZ(
         title,
@@ -124,6 +157,7 @@ class BookDetailPageView extends StatelessWidget {
       return Column(
         children: [
           Tappable(
+            key: authorKey(author.name),
             onTap: () => _goToSearhPage(context, author.name),
             child: TextXYZ(
               '${author.name} (${author.birthYear} - ${author.deathYear})',
@@ -140,6 +174,7 @@ class BookDetailPageView extends StatelessWidget {
   Widget _downloadCountWidget(BookLocale locale, int count) {
     return TextXYZ(
       locale.downloadCount(count),
+      key: downloadCountKey,
       style: TypographyToken.caption12(),
       textAlign: TextAlign.center,
     );

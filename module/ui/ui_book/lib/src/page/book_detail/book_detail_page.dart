@@ -20,6 +20,6 @@ class BookDetailPage extends StatelessWidget {
         create: (context) =>
             BookDetailCubit(fetchBookDetailUseCase: fetchBookDetailUseCase)
               ..fetchBookDetail(id),
-        child: const BookDetailPageView());
+        child: BookDetailPageView(id: id));
   }
 }

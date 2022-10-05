@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:localization/localization.dart';
-import 'package:ui_book/src/page/book_list/views/book_list_error_view.dart';
+import 'package:ui_book/src/component/book_error_view.dart';
 import 'package:ui_book/src/page/book_list/views/book_list_loading_view.dart';
 
 import '../../component/book_list_card.dart';
@@ -17,6 +17,27 @@ class BookListSearchPageView extends StatefulWidget {
   const BookListSearchPageView({
     Key? key,
   }) : super(key: key);
+
+  static const searchDebounceTime = 2;
+  static const loadingItemCount = 5;
+  static const extraLoadingCount = 1;
+  static const nonExtraLoadingCount = 0;
+
+  // Push named
+  static const searchResult = 'search_result';
+  static const bookDetail = 'book_detail';
+
+  // Key
+  static const backButtonKey = Key('back-button');
+  static const searchResultTitleKey = Key('search-result-title');
+  static const loadingViewKey = Key('loading-view');
+  static const errorViewKey = Key('error-view');
+  static const listViewKey = Key('list-view');
+  static Key bookContentKey(int id) {
+    return Key('book-$id');
+  }
+
+  static const loadMoreKey = Key('load-more');
 
   @override
   State<BookListSearchPageView> createState() => _BookListSearchPageViewState();
@@ -70,7 +91,9 @@ class _BookListSearchPageViewState extends State<BookListSearchPageView> {
                   _searchDebounce?.cancel();
                 }
                 _searchDebounce = Timer(
-                  const Duration(seconds: 2),
+                  const Duration(
+                    seconds: BookListSearchPageView.searchDebounceTime,
+                  ),
                   () => {
                     context.read<BookListCubit>().setKeyword(keyword),
                     FocusScope.of(context).unfocus()
@@ -78,6 +101,7 @@ class _BookListSearchPageViewState extends State<BookListSearchPageView> {
                 );
               },
               cancelSearchText: locale.cancel,
+              keyNavigationIcon: BookListSearchPageView.backButtonKey,
             ),
             body: _childWidget(context, locale, state),
           );
@@ -95,11 +119,20 @@ class _BookListSearchPageViewState extends State<BookListSearchPageView> {
     final keyword = state.currentKeyword ?? '';
 
     if (state.loadingState == BookListLoadingState.fetch) {
-      return const BookListLoadingView(count: 5);
+      return const BookListLoadingView(
+        key: BookListSearchPageView.loadingViewKey,
+        count: BookListSearchPageView.loadingItemCount,
+      );
     }
 
     if (state.loadingState == BookListLoadingState.error) {
-      return const BookListErrorView();
+      return BookErrorView(
+        key: BookListSearchPageView.errorViewKey,
+        title: locale.somethingWrong,
+        description: locale.checkConnection,
+        buttonTitle: locale.retry,
+        onTapButton: () => context.read<BookListCubit>().onRefresh(),
+      );
     }
 
     return Column(
@@ -121,6 +154,7 @@ class _BookListSearchPageViewState extends State<BookListSearchPageView> {
                   )
                 ],
               ),
+              key: BookListSearchPageView.searchResultTitleKey,
             ),
           ),
         Expanded(
@@ -130,17 +164,21 @@ class _BookListSearchPageViewState extends State<BookListSearchPageView> {
                 return loadMore ? _onScrolled(context, notification) : false;
               },
               child: ListView.separated(
+                key: BookListSearchPageView.listViewKey,
                 controller: controller,
                 padding: EdgeInsets.fromLTRB(
                     16, keyword.isNotEmpty ? 0 : 16, 16, 16),
                 itemBuilder: ((context, index) {
                   if (index == state.books.length) {
-                    return const BookListPlaceholder();
+                    return const BookListPlaceholder(
+                      key: BookListSearchPageView.loadMoreKey,
+                    );
                   }
 
                   final book = state.books[index];
                   final authors = book.authors;
                   return BookListCard(
+                    key: BookListSearchPageView.bookContentKey(book.id),
                     imageURL: book.formats.image ?? '',
                     title: book.title,
                     author: authors.isNotEmpty ? authors.first.name : '',
@@ -153,8 +191,8 @@ class _BookListSearchPageViewState extends State<BookListSearchPageView> {
                 separatorBuilder: (context, index) => const SizedBox(height: 8),
                 itemCount: state.books.length +
                     (state.loadingState == BookListLoadingState.loadMore
-                        ? 1
-                        : 0),
+                        ? BookListSearchPageView.extraLoadingCount
+                        : BookListSearchPageView.nonExtraLoadingCount),
               ),
             ),
             onRefresh: () => context.read<BookListCubit>().onRefresh(),

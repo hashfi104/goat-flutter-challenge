@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class BookListLoadingView extends StatelessWidget {
   final int count;
 
+  static const listViewPadding = EdgeInsets.all(16);
+
   const BookListLoadingView({
     Key? key,
     required this.count,
@@ -12,7 +14,7 @@ class BookListLoadingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      padding: const EdgeInsets.all(16),
+      padding: listViewPadding,
       itemBuilder: ((context, index) {
         return const BookListPlaceholder();
       }),
@@ -29,11 +31,27 @@ class BookListPlaceholder extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  static const containerAllPadding = EdgeInsets.all(16);
+  static const double outerPaddingLeft = 16;
+  static const double outerPaddingRight = 16;
+  static const double containerPaddingLeft = 16;
+  static const double containerPaddingRight = 16;
+  static const double imageWidth = 80;
+  static const double imageHeight = 120;
+  static const double separatorWidth = 16;
+  static const double borderLeftRightWidth = 2;
+
   @override
   Widget build(BuildContext context) {
-    final double textWidth = MediaQuery.of(context).size.width - 162;
+    final double textWidth = MediaQuery.of(context).size.width -
+        (outerPaddingLeft +
+            outerPaddingRight +
+            containerPaddingLeft +
+            containerPaddingRight +
+            imageWidth +
+            borderLeftRightWidth);
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: containerAllPadding,
       decoration: BoxDecoration(
         border: Border.all(
           color: ColorToken.borderSubtle,
@@ -46,10 +64,10 @@ class BookListPlaceholder extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const LoadingPlaceholderXYZ.rectangle(
-              width: 80,
-              height: 120,
+              width: imageWidth,
+              height: imageHeight,
             ),
-            const SizedBox(width: 16),
+            const SizedBox(width: separatorWidth),
             Padding(
               padding: const EdgeInsets.only(top: 12),
               child: Column(
