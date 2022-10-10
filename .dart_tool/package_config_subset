@@ -366,6 +366,10 @@ service_locator
 2.18
 file:///Users/hashfialfian/goat-flutter-challenge/module/library/service_locator/
 file:///Users/hashfialfian/goat-flutter-challenge/module/library/service_locator/lib/
+test_utils
+2.18
+file:///Users/hashfialfian/goat-flutter-challenge/module/library/test_utils/
+file:///Users/hashfialfian/goat-flutter-challenge/module/library/test_utils/lib/
 router_book
 2.18
 file:///Users/hashfialfian/goat-flutter-challenge/module/router/router_book/

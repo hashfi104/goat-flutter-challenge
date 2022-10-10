@@ -22,6 +22,10 @@ class BookListCubit extends Cubit<BookListState> with SafeEmitCubit {
     final prevUrl = state.prevUrl ?? '';
     final nextUrl = state.nextUrl ?? '';
 
+    if (nextUrl.isEmpty && prevUrl.isEmpty && !state.isFirstLoad) {
+      return;
+    }
+
     if (nextUrl.isEmpty && prevUrl.isNotEmpty) {
       return;
     }
@@ -49,6 +53,7 @@ class BookListCubit extends Cubit<BookListState> with SafeEmitCubit {
             loadingState: BookListLoadingState.success,
             prevUrl: result.previous,
             nextUrl: result.next,
+            isFirstLoad: false,
           ));
         }
       },

@@ -15,6 +15,7 @@ class BookListState {
   final String? currentKeyword;
   final String? prevUrl;
   final String? nextUrl;
+  final bool isFirstLoad;
 
   const BookListState({
     this.books = const [],
@@ -22,6 +23,7 @@ class BookListState {
     this.currentKeyword,
     this.prevUrl,
     this.nextUrl,
+    this.isFirstLoad = true,
   });
 
   BookListState copyWith({
@@ -30,6 +32,7 @@ class BookListState {
     String? currentKeyword,
     String? prevUrl,
     String? nextUrl,
+    bool? isFirstLoad,
   }) {
     return BookListState(
       books: books ?? this.books,
@@ -37,6 +40,7 @@ class BookListState {
       currentKeyword: currentKeyword ?? this.currentKeyword,
       prevUrl: prevUrl ?? this.prevUrl,
       nextUrl: nextUrl ?? this.nextUrl,
+      isFirstLoad: isFirstLoad ?? this.isFirstLoad,
     );
   }
 }

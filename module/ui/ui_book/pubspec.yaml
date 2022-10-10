@@ -1,7 +1,6 @@
 name: ui_book
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
 publish_to: none
 
 environment:
@@ -39,6 +38,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+
+  test_utils:
+    path: ../../library/test_utils
 
 flutter:
   assets:
