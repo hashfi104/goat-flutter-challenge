@@ -75,6 +75,7 @@ class BookListCubit extends Cubit<BookListState> with SafeEmitCubit {
       books: [],
       prevUrl: '',
       nextUrl: '',
+      isFirstLoad: true,
     ));
     await loadBooks();
   }
