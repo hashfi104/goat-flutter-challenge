@@ -16,6 +16,8 @@ export 'src/image/image_holder.dart';
 export 'src/loading/loading_xyz.dart';
 export 'src/loading/loading_placeholder_xyz.dart';
 
+export 'src/snackbar/snackbar.dart';
+
 export 'src/structure/navbar/navbar_xyz.dart';
 export 'src/structure/navbar/navbar_search_xyz.dart';
 export 'src/structure/empty_state_xyz.dart';

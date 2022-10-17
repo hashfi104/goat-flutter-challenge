@@ -92,7 +92,7 @@ class BookDetailPageView extends StatelessWidget {
                 locale.readOnline,
                 key: readOnlineButtonKey,
                 onPressed: () async {
-                  _launchUrl(book.formats.textHtml ?? '');
+                  _launchUrl(context, book.formats.textHtml ?? '');
                 },
               )
             ],
@@ -196,9 +196,10 @@ class BookDetailPageView extends StatelessWidget {
     );
   }
 
-  Future<void> _launchUrl(String urlString) async {
+  Future<void> _launchUrl(BuildContext context, String urlString) async {
     final url = Uri.parse(urlString);
     if (!await launchUrl(url)) {
+      Snackbar.showError(context, 'Could not launch page');
       throw 'Could not launch $url';
     }
   }
