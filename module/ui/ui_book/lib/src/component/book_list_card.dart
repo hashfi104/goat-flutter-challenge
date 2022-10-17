@@ -37,6 +37,7 @@ class BookListCard extends StatelessWidget {
             containerPaddingLeft +
             containerPaddingRight +
             imageWidth +
+            separatorWidth +
             borderLeftRightWidth);
 
     final double contentWidth = MediaQuery.of(context).size.width -

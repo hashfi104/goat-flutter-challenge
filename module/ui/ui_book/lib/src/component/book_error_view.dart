@@ -8,6 +8,8 @@ class BookErrorView extends StatelessWidget {
   final String buttonTitle;
   final VoidCallback? onTapButton;
 
+  static const buttonKey = Key('button');
+
   const BookErrorView({
     Key? key,
     required this.title,
@@ -27,6 +29,7 @@ class BookErrorView extends StatelessWidget {
           description: description,
           positiveAction: ButtonXYZ.large(
             buttonTitle,
+            key: buttonKey,
             onPressed: onTapButton,
           ),
         ),

@@ -49,6 +49,7 @@ class BookListPlaceholder extends StatelessWidget {
             containerPaddingLeft +
             containerPaddingRight +
             imageWidth +
+            separatorWidth +
             borderLeftRightWidth);
     return Container(
       padding: containerAllPadding,

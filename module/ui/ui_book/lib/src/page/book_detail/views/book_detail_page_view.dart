@@ -153,9 +153,15 @@ class BookDetailPageView extends StatelessWidget {
   }
 
   List<Widget> _authorsWidget(BuildContext context, List<Person> authors) {
+    if (authors.isEmpty) {
+      return [
+        const SizedBox.shrink(),
+      ];
+    }
+
     return authors.map((author) {
       final lifeYear = author.birthYear != null
-          ? '(${author.birthYear} - ${author.deathYear})'
+          ? ' (${author.birthYear} - ${author.deathYear})'
           : '';
       return Column(
         children: [
@@ -163,7 +169,7 @@ class BookDetailPageView extends StatelessWidget {
             key: authorKey(author.name),
             onTap: () => _goToSearhPage(context, author.name),
             child: TextXYZ(
-              '${author.name} $lifeYear',
+              '${author.name}$lifeYear',
               style: TypographyToken.body14(),
               textAlign: TextAlign.center,
             ),

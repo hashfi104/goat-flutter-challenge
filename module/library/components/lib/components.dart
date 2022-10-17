@@ -20,6 +20,7 @@ export 'src/structure/navbar/navbar_xyz.dart';
 export 'src/structure/navbar/navbar_search_xyz.dart';
 export 'src/structure/empty_state_xyz.dart';
 export 'src/structure/menu_bar_xyz.dart';
+export 'src/structure/search_bar_xyz.dart';
 
 export 'src/text/text_xyz.dart';
 
