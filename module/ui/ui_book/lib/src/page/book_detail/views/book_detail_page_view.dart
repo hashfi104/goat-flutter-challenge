@@ -92,7 +92,12 @@ class BookDetailPageView extends StatelessWidget {
                 locale.readOnline,
                 key: readOnlineButtonKey,
                 onPressed: () async {
-                  _launchUrl(context, book.formats.textHtml ?? '');
+                  final urlString = book.formats.textHtml;
+                  if (urlString == null) {
+                    Snackbar.showError(context, 'Could not launch page');
+                  } else {
+                    _launchUrl(context, book.formats.textHtml ?? '');
+                  }
                 },
               )
             ],
@@ -144,10 +149,13 @@ class BookDetailPageView extends StatelessWidget {
     return Tappable(
       key: titleKey,
       onTap: () => _goToSearhPage(context, title),
-      child: TextXYZ(
-        title,
-        style: TypographyToken.body16Bold(),
-        textAlign: TextAlign.center,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: TextXYZ(
+          title,
+          style: TypographyToken.body16Bold(),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
@@ -168,10 +176,13 @@ class BookDetailPageView extends StatelessWidget {
           Tappable(
             key: authorKey(author.name),
             onTap: () => _goToSearhPage(context, author.name),
-            child: TextXYZ(
-              '${author.name}$lifeYear',
-              style: TypographyToken.body14(),
-              textAlign: TextAlign.center,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: TextXYZ(
+                '${author.name}$lifeYear',
+                style: TypographyToken.body14(),
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
           const SizedBox(height: 4),
@@ -199,7 +210,6 @@ class BookDetailPageView extends StatelessWidget {
   Future<void> _launchUrl(BuildContext context, String urlString) async {
     final url = Uri.parse(urlString);
     if (!await launchUrl(url)) {
-      Snackbar.showError(context, 'Could not launch page');
       throw 'Could not launch $url';
     }
   }
