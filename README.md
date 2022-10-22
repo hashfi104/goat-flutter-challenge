@@ -6,7 +6,7 @@ Implement with `clean architecture` with multiple repo
 
 ## Demo
 
-https://drive.google.com/file/d/17w_wrSPA-re610Qv2D6kWzRSsFFhVp-T/preview
+You can check on demo folder
 
 ## Prequisite
 
